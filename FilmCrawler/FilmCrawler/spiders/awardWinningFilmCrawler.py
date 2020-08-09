@@ -1,5 +1,6 @@
 import scrapy
 from FilmCrawler.items import FilmcrawlerItem
+from re import search
 
 class awardWinningFilmSpider(scrapy.Spider):
     name = "awardWinningFilmCrawler"
@@ -68,7 +69,8 @@ class awardWinningFilmSpider(scrapy.Spider):
 
             # the above getall function returns all tags inner next including newline
             # so, the below filter is required
-            answers = [valid_str for valid_str in answers if valid_str != '\n']
+            # re.search('^\[\d]$', valid_str) is to remove reference links (e.g [1])
+            answers = [valid_str for valid_str in answers if valid_str is not '\n' and search('^\[\d]$', valid_str) is None]
 
             movie_details[title] = answers
 
