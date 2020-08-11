@@ -48,7 +48,8 @@ class awardWinningFilmSpider(scrapy.Spider):
     def parse_film_details_page(self, response):
         # data extracting from the details page
         movie_details = response.meta['movie_details']
-        rows = response.css('.infobox tr')
+        # fetch only the first infobox 
+        rows = response.css('.infobox:nth-child(1) tr')
         total_rows = len(rows)
 
         # as movie name is already collected; so we skip the first row
@@ -64,6 +65,7 @@ class awardWinningFilmSpider(scrapy.Spider):
             title = row.css('th *::text').get()
             if not title:
                 continue
+            title = title.replace(' ', '_')
             # answers valiable is the right column of the infotable
             answers = row.css('td *::text').getall()
 
