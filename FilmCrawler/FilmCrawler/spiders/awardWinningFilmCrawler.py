@@ -1,6 +1,6 @@
 import scrapy
 from FilmCrawler.items import FilmcrawlerItem
-from re import search
+from re import search, sub
 
 class awardWinningFilmSpider(scrapy.Spider):
     name = "awardWinningFilmCrawler"
@@ -66,6 +66,8 @@ class awardWinningFilmSpider(scrapy.Spider):
             if not title:
                 continue
             title = title.replace(' ', '_')
+            # ignore bracket
+            title = sub(r'[\(\)]', '', title)
             # answers valiable is the right column of the infotable
             answers = row.css('td *::text').getall()
 
