@@ -6,9 +6,10 @@ from sys import exit
 parser = argparse.ArgumentParser(description='Award winning films service')
 
 # Add the arguments
-parser.add_argument('Service',metavar='service', type=str, help='"parse" to run the crawler; "serve" to serve the API')
-
-# parser.add_argument('Serve',metavar='serve', type=str, help='To serve the API')
+parser.add_argument('Service',
+    metavar='service', 
+    type=str, 
+    help='"parse" to run the crawler; "serve" to serve the API')
 
 # Execute the parse_args() method
 args = parser.parse_args()
