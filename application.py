@@ -1,4 +1,5 @@
 import argparse
+from os import chdir
 from subprocess import run as run_shell
 from sys import exit
 
@@ -15,6 +16,7 @@ parser.add_argument('Service',
 args = parser.parse_args()
 
 if (args.Service == 'parse'):
+    chdir('FilmCrawler')
     run_shell(['scrapy', 'crawl', 'awardWinningFilmCrawler'])
 elif (args.Service == 'serve'):
     run_shell(['python', 'manage.py', 'runserver', '8080'])
