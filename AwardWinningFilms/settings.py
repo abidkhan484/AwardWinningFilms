@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'rest_framework_mongoengine',
+    'AwardWinningFilmsAPI.apps.AwardwinningfilmsapiConfig'
 ]
 
 MIDDLEWARE = [
@@ -72,13 +76,21 @@ WSGI_APPLICATION = 'AwardWinningFilms.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+# Configure Mongo as database. Replace below values as required
+# Set database settings to None
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': '',
     }
 }
+
+# Configure Mongo as database. Replace below values as required
+from mongoengine import connect
+
+MONGO_DATABASE_NAME = 'films'
+MONGO_HOST = '127.0.0.1'
+MONGO_PORT = 27017
+connect(MONGO_DATABASE_NAME, host=MONGO_HOST, port=MONGO_PORT)
 
 
 # Password validation
