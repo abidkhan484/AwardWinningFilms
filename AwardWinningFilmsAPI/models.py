@@ -1,3 +1,46 @@
-from django.db import models
+from mongoengine import Document, fields, ListField
 
-# Create your models here.
+
+class Awardwinningfilms(Document):
+    meta = {'collection': 'awardWinningFilms'}
+
+    award = fields.StringField()
+    movie_name = fields.StringField()
+    movie_url = fields.StringField()
+    nomination = fields.StringField()
+    release_year = fields.StringField()
+
+    Animation_by = ListField()
+    Backgrounds_by = ListField()
+    Based_on = ListField()
+    Box_office = ListField()
+    Budget = ListField()
+    Cinematography = ListField()
+    Color_process = ListField()
+    Country = ListField()
+    Country_of_origin = ListField()
+    Directed_by = ListField()
+    Distributed_by = ListField()
+    Distributor = ListField()
+    Edited_by = ListField()
+    Editors = ListField()
+    External_links = ListField()
+    Language = ListField()
+    Layouts_by = ListField()
+    Music_by = ListField()
+    Narrated_by = ListField()
+    Original_ = ListField()
+    Original_release = ListField()
+    Produced_by = ListField()
+    Producers = ListField()
+    Production = ListField()
+    Production_ = ListField()
+    Release = ListField()
+    Release_date = ListField()
+    Running_time = ListField()
+    Screenplay_by = ListField()
+    Spanish = ListField()
+    Starring = ListField()
+    Story_by = ListField()
+    Theme_music_composer = ListField()
+    Written_by = ListField()
